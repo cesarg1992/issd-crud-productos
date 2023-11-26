@@ -11,7 +11,7 @@ namespace Productos
 {
 
 
-    public partial class About
+    public partial class Precios
     {
 
         /// <summary>

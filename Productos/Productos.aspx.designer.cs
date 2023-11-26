@@ -11,7 +11,7 @@ namespace Productos
 {
 
 
-    public partial class Contact
+    public partial class Productos
     {
 
         /// <summary>
