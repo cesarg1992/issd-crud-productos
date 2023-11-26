@@ -11,18 +11,32 @@ namespace Productos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            clndVigencia.SelectedDate = DateTime.Now;
         }
 
         protected void btnAlta_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(ddlProductos.SelectedValue))
+            {
+                lblAviso.Text = "Ingrese Producto";
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPrecio.Text))
+            {
+                lblAviso.Text = "Ingrese Monto";
+                return;
+            }
+            if (clndVigencia.SelectedDate.Year == 1)
+            {
+                lblAviso.Text = "Ingrese Fecha";
+                return;
+            }
+
+            lblAviso.Text = "";
             preciosDs.InsertParameters["Monto"].DefaultValue = txtPrecio.Text;
             preciosDs.InsertParameters["Fecha"].DefaultValue = clndVigencia.SelectedDate.ToString();
             preciosDs.InsertParameters["idProducto"].DefaultValue = ddlProductos.SelectedValue.ToString();
             preciosDs.Insert();
-            ddlProductos.SelectedValue = "";
             txtPrecio.Text = "";
-            clndVigencia.SelectedDate = DateTime.Now;
         }
     }
 }

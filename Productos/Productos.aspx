@@ -4,9 +4,13 @@
     <main aria-labelledby="title">
         <h2 id="title"><%: Title %>
     </h2>
+        <br />
         Descripción:<asp:TextBox ID="descripcion" runat="server"></asp:TextBox>
             <asp:Button ID="btnAlta" runat="server" OnClick="btnAlta_Click" Text="Crear" />
-            <asp:Label ID="lblAviso" runat="server"></asp:Label>
+        <br />
+            <asp:Label ID="lblAviso" CssClass="text-danger" runat="server"></asp:Label>
+        <br />
+        <br />
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="productosDs">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />

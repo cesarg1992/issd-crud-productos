@@ -16,10 +16,17 @@ namespace Productos
 
         protected void btnAlta_Click(object sender, EventArgs e)
         {
-            productosDs.InsertParameters["Descripcion"].DefaultValue = descripcion.Text;
-            productosDs.Insert();
-            lblAviso.Text = "*producto cargado correctamente";
-            descripcion.Text = "";
+            if (string.IsNullOrEmpty(descripcion.Text))
+            {
+                lblAviso.Text = "Ingrese descripción del producto.";
+            }
+            else
+            {
+                productosDs.InsertParameters["Descripcion"].DefaultValue = descripcion.Text;
+                productosDs.Insert();
+                lblAviso.Text = "";
+                descripcion.Text = "";
+            }
         }
     }
 }
